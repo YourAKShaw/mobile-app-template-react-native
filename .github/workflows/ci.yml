@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Typecheck, lint, format, test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm test -- --ci
+      - run: npx expo-doctor@latest
+
+  native-config:
+    # Verifies app.config.ts and its plugins generate both native projects and that
+    # Metro can bundle the JS for both platforms. Does not compile native code: that needs macOS/Xcode or the Android SDK (see README "CI").
+    name: Prebuild + bundle (${{ matrix.variant }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        variant: [development, production]
+    env:
+      APP_VARIANT: ${{ matrix.variant }}
+      EXPO_PUBLIC_API_BASE_URL: https://api.example.com
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx expo prebuild --no-install --clean
+      - name: Bundle JavaScript (Metro + Hermes)
+        run: npx expo export --platform ios --platform android --output-dir dist

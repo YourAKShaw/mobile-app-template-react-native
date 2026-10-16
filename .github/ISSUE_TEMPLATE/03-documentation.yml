@@ -1,0 +1,27 @@
+name: Documentation
+description: Report unclear, incorrect, or missing documentation.
+title: '[docs] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the template. Check existing issues and `.github/SUPPORT.md` first.
+        Do not include secrets, .env files, signing credentials, personal data, or full API responses.
+  - type: input
+    id: location
+    attributes:
+      label: File or section
+      description: Link to the affected page or name the file and heading.
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What needs to change?
+      description: Explain what is unclear and what you expected to find.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested correction

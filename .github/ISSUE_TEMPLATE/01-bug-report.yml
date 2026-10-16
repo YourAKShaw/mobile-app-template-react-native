@@ -1,0 +1,47 @@
+name: Bug report
+description: Report a reproducible problem with the mobile template.
+title: '[bug] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the template. Check existing issues and `.github/SUPPORT.md` first.
+        Do not include secrets, .env files, signing credentials, personal data, or full API responses.
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include a minimal reproduction and the exact command or user action.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include sanitized error output if useful.
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Affected platform
+      options:
+        - iOS
+        - Android
+        - Both iOS and Android
+        - Tooling or CI
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node/npm versions, Expo SDK, device or simulator, and build variant.
+    validations:
+      required: true

@@ -1,0 +1,70 @@
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Generated native projects (Continuous Native Generation). See README "Native folders".
+/ios
+/android
+
+# Native signing material: never commit
+.kotlin/
+*.orig.*
+*.jks
+*.keystore
+!debug.keystore
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+google-services.json
+GoogleService-Info.plist
+
+# Metro
+.metro-health-check*
+
+# Environment: only .env.example is committed
+.env
+.env.*
+!.env.example
+
+# Test / coverage
+coverage/
+
+# Logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# IDEs & Editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Claude Code personal files
+CLAUDE.local.md
+.claude/settings.local.json

@@ -1,0 +1,8 @@
+# GitHub Actions only. Upgrade Expo/React Native packages with `npx expo install --fix`
+# after an SDK upgrade, not individually, so versions stay compatible.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

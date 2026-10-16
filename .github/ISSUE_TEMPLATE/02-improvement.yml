@@ -1,0 +1,28 @@
+name: Improvement
+description: Suggest an improvement to the template or development workflow.
+title: '[improvement] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the template. Check existing issues and `.github/SUPPORT.md` first.
+        Do not include secrets, .env files, signing credentials, personal data, or full API responses.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: Who needs this and what is difficult today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the desired outcome and how it fits a reusable mobile template.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and trade-offs
+      description: Consider dependency cost, native builds, platform support, and simpler options.
